@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            margin:100px auto;
+            padding: 40px;
+            width: 220px;
+            border: 15px;
+            border-radius: 15px;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>REGISTRATION FORM</h1>
+    <form action="f1" >
+        <label for="user-name">NAME:</label>
+        <input type="text" name="name" id="user-name"  ><br>
+
+        <label for="User-email">Email:</label>
+        <input type="email" name="email" id="user-email"><br>
+
+        <label for="user-password">PASSWORD:</label>
+        <input type="password" name="password" id="user-password"><br>
+
+        <label for="user-number">PHONE NO:</label>
+        <input type="number" name="phone_no" id="user-number"><br>
+
+        <label for="user-address">ADDRESS:</label>
+        <textarea name="address" id="user-address"></textarea>
+        <!-- <input type="text" name="address" id="user-address"><br> -->
+
+        <label for="user-state">STATE:</label>
+        <select name="user-state" id="state">
+            <option value="gujarat">GUJARAT</option>
+            <option value="MAHARASHTRA">MAHARASHTRA</option>
+            <option value="RAJASTHAN">RAJASTHAN</option>
+            <option value="DELHI">DELHI</option>
+            <option value="KERALA">KERALA</option>
+            <option value="PUNJAB">PUNJAB</option>
+            <option value="BIHAR">BIHAR</option>
+        </select><br>
+
+        <label for="user-Gender">GENDER:</label>
+        
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+
+        
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br>
+
+        <label for="hobby">HOBBIES:</label><br>
+
+        <input type="checkbox" name="hobby" id="hobby1" value="reading">
+        <label for="hobby1">READING</label><br>
+        
+
+        <input type="checkbox" name="hobby" id="hobby2" value="traveling">
+        <label for="hobby2">TRAVELING</label><br>
+
+        <input type="checkbox" name="hobby" id="hobby3" value="art-craft">
+        <label for="hobby3">ART-CRAFT</label><br>
+
+        <input type="checkbox" name="hobby" id="hobby4" value="singing">
+        <label for="hobby4">SINGING</label><br>
+
+        <input type="checkbox" name="hobby" id="hobby5" value="dancing">
+        <label for="hobby5">DANCING</label><br>
+
+        <input type="checkbox" name="hobby" id="hobby6" value="writting">
+        <label for="hobby6">WRITTING</label><br>
+
+        <input type="submit" name="submit" id="submit" style="width: 220px; margin: auto;" >
+    </form>
+</div>
+</body>
+</html>
