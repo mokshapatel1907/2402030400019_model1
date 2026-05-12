@@ -4,35 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/formcss.css">
     <style>
-        div{
-            margin:100px auto;
-            padding: 40px;
-            width: 220px;
-            border: 15px;
-            border-radius: 15px;
-            background-color: antiquewhite;
+        body{
+            background-color: rgb(76, 155, 219);
         }
+        #img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 200px;
+            height: 100px;
+            border-radius: 5px; 
+        }
+        
     </style>
 </head>
 <body>
-    <div>
-        <h1>REGISTRATION FORM</h1>
+    
+    
+    <marquee behavior="slide" direction="right" loop="5" scrollamount="15s">WELCOME TO MY PAGE</marquee>
+    <div class="a">
+        
     <form action="f1" >
-        <label for="user-name">NAME:</label>
-        <input type="text" name="name" id="user-name"  ><br>
+        
+        <h1 style="text-align: center;"> REGISTRATION FORM</h1><br><br>
 
-        <label for="User-email">Email:</label>
-        <input type="email" name="email" id="user-email"><br>
+        <img src="https://www.shutterstock.com/image-vector/register-now-search-bar-share-260nw-2632905643.jpg" id="img"><br><br>
 
-        <label for="user-password">PASSWORD:</label>
-        <input type="password" name="password" id="user-password"><br>
+        <label for="user-name">NAME:</label><br>
+        <input type="text" name="name" id="user-name"  style="width: 300px;" placeholder="enter name"><br>
 
-        <label for="user-number">PHONE NO:</label>
-        <input type="number" name="phone_no" id="user-number"><br>
+        <label for="User-email">Email:</label><br>
+        <input type="email" name="email" id="user-email" style="width: 300px;" placeholder="enter email"><br>
 
-        <label for="user-address">ADDRESS:</label>
-        <textarea name="address" id="user-address"></textarea>
+        <label for="user-password">PASSWORD:</label><br>
+        <input type="password" name="password" id="user-password" style="width: 300px;" placeholder="enter password"><br>
+
+        <label for="user-number">PHONE NO:</label><br>
+        <input type="number" name="phone_no" id="user-number" style="width: 300px;" placeholder="enter phone no"><br>
+
+        <label for="user-address">ADDRESS:</label><br>
+        <textarea name="address" id="user-address" style="width: 300px;" placeholder="enter address"></textarea><br><br>
         <!-- <input type="text" name="address" id="user-address"><br> -->
 
         <label for="user-state">STATE:</label>
@@ -44,7 +57,7 @@
             <option value="KERALA">KERALA</option>
             <option value="PUNJAB">PUNJAB</option>
             <option value="BIHAR">BIHAR</option>
-        </select><br>
+        </select><br><br>
 
         <label for="user-Gender">GENDER:</label>
         
@@ -53,13 +66,12 @@
 
         
         <input type="radio" id="female" name="gender" value="female">
-        <label for="female">Female</label><br>
+        <label for="female">Female</label><br><br>
 
         <label for="hobby">HOBBIES:</label><br>
 
         <input type="checkbox" name="hobby" id="hobby1" value="reading">
-        <label for="hobby1">READING</label><br>
-        
+        <label for="hobby1">READING</label><br>            
 
         <input type="checkbox" name="hobby" id="hobby2" value="traveling">
         <label for="hobby2">TRAVELING</label><br>
@@ -74,10 +86,23 @@
         <label for="hobby5">DANCING</label><br>
 
         <input type="checkbox" name="hobby" id="hobby6" value="writting">
-        <label for="hobby6">WRITTING</label><br>
+        <label for="hobby6">WRITTING</label><br><br>
 
-        <input type="submit" name="submit" id="submit" style="width: 220px; margin: auto;" >
+        <a href="https://github.com/mokshapatel1907/2402030400019_model1">github link</a><br><br>
+        
+        <video controls>
+            <source src="/video.mp4"><br>
+        </video><br><br>
+
+        <audio controls>
+            <source src="/audio.mp3"><br>
+        </audio><br><br>
+        
+        <iframe src="/list.html" title="Description of content"></iframe><br><br>
+        
+        <input type="submit" name="submit" id="submit" style="width: 300px;height: 35px; margin: auto; background-color: rgb(149, 166, 216);" ><br>
     </form>
-</div>
+    </div>
+    
 </body>
 </html>
