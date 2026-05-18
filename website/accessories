@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LuxeGift Accessories</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #242527 0%, #2F4A61 35%, #5F8396 65%, #6F6558 85%, #BCB9AC 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      padding-top: 150px;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: rgba(188,185,172,0.12);
+      border-radius: 50%;
+      top: -250px;
+      left: -200px;
+      z-index: -1;
+      filter: blur(80px);
+    }
+
+    body::after {
+      content: '';
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      background: rgba(95,131,150,0.18);
+      border-radius: 50%;
+      bottom: -250px;
+      right: -200px;
+      z-index: -1;
+      filter: blur(80px);
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      z-index: 9999;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 50px;
+      border-radius: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-box input {
+      width: 260px;
+      padding: 12px 18px;
+      border: none;
+      outline: none;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .search-box input::placeholder {
+      color: #ddd;
+    }
+
+    .search-box button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(to right,#BCB9AC,#d9d4ca);
+      color: #1d2731;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .logo {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #f0e7d8;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #f5f5f5;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #BCB9AC;
+    }
+
+    /* Title */
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      color: #f1ece2;
+      font-family: Georgia, serif;
+    }
+
+    /* Cards */
+    .gift-container {
+      width: 85%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 35px;
+    }
+
+    .gift-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      overflow: hidden;
+      padding: 16px;
+      transition: 0.4s;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .gift-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.35);
+    }
+
+    .gift-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .gift-info {
+      padding: 18px 10px;
+    }
+
+    .gift-info h3 {
+      color: #f0e7d8;
+      margin-bottom: 10px;
+      font-size: 1.45rem;
+      font-weight: 600;
+    }
+
+    .gift-info p {
+      color: #dddddd;
+      line-height: 1.8;
+      margin-bottom: 14px;
+      font-size: 0.96rem;
+    }
+
+    .price {
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+
+    .gift-info button {
+      padding: 12px 32px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(to right,#BCB9AC,#d9d4ca);
+      color: #1d2731;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .gift-info button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Confirm Popup */
+    #popup-message {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.45);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 9999;
+    }
+
+    #popup-message.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .popup-box {
+      width: 350px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(20px);
+      padding: 35px;
+      border-radius: 25px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      color: #fff;
+      animation: popupScale 0.3s ease;
+    }
+
+    .popup-box h2 {
+      margin-bottom: 12px;
+      color: #f0e7d8;
+    }
+
+    .popup-box p {
+      color: #dddddd;
+      margin-bottom: 25px;
+    }
+
+    .popup-box button {
+      padding: 12px 35px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(to right,#BCB9AC,#d9d4ca);
+      color: #1d2731;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .popup-box button:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes popupScale {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Footer */
+    footer {
+      width: 85%;
+      margin: 70px auto 35px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 45px 40px 20px;
+      color: #f1ece2;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 35px;
+    }
+
+    .footer-box h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #f0e7d8;
+    }
+
+    .footer-box h3 {
+      margin-bottom: 18px;
+      color: #ffffff;
+      font-size: 1.2rem;
+    }
+
+    .footer-box p {
+      color: #dddddd;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .footer-box ul {
+      list-style: none;
+    }
+
+    .footer-box ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-box ul li a {
+      text-decoration: none;
+      color: #dddddd;
+      transition: 0.3s;
+    }
+
+    .footer-box ul li a:hover {
+      color: #ffffff;
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      margin-top: 35px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      color: #e0e0e0;
+      font-size: 0.95rem;
+    }
+
+    @media(max-width:768px) {
+      nav {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+      }
+      nav ul {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .section-title {
+        font-size: 2.3rem;
+      }
+      .gift-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">LuxeGift</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search products...">
+      <button onclick="searchProduct()">Search</button>
+    </div>
+    <ul>
+      <li><a href="../website/web(gift).html">Home</a></li>
+      <li><a href="../website/gift.html">Gifts</a></li>
+      <li><a href="../website/accessories.html">Accessories</a></li>
+      <li><a href="../website/flowers.html">Flowers</a></li>
+      <li><a href="../website/cart.html">Cart</a></li>
+      <li><a href="../website/login.html">Login</a></li>
+    </ul>
+  </nav>
+
+  <h1 class="section-title">Luxury Accessories Collection</h1>
+
+  <section class="gift-container">
+    <!-- Diamond Necklace -->
+    <div class="gift-card">
+      <img src="https://cdn1.jewelxy.com/live/img/business_product/TLmDkkmgj5_20230327142644.jpg">
+      <div class="gift-info">
+        <h3>Diamond Necklace</h3>
+        <p>Luxury diamond necklace with elegant royal finishing.</p>
+        <div class="price">₹12,999</div>
+        <button class="buy-btn" data-name="Diamond Necklace" data-price="12999" data-image="https://cdn1.jewelxy.com/live/img/business_product/TLmDkkmgj5_20230327142644.jpg">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Pearl Necklace -->
+    <div class="gift-card">
+      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1200&auto=format&fit=crop">
+      <div class="gift-info">
+        <h3>Pearl Necklace</h3>
+        <p>Premium necklace designed for luxury fashion lovers.</p>
+        <div class="price">₹11,399</div>
+        <button class="buy-btn" data-name="Pearl Necklace" data-price="11399" data-image="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=1200&auto=format&fit=crop">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Double layered Necklace -->
+    <div class="gift-card">
+      <img src="https://img.tatacliq.com/images/i20//437Wx649H/MP000000023746017_437Wx649H_202409210640481.jpeg">
+      <div class="gift-info">
+        <h3>Double layered Necklace</h3>
+        <p>Elegant shiny necklace collection with modern style.</p>
+        <div class="price">₹12,999</div>
+        <button class="buy-btn" data-name="Double layered Necklace" data-price="12999" data-image="https://img.tatacliq.com/images/i20//437Wx649H/MP000000023746017_437Wx649H_202409210640481.jpeg">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Diamond Necklace 2 -->
+    <div class="gift-card">
+      <img src="https://dstarjewellery.com/wp-content/uploads/2021/08/p3.jpg">
+      <div class="gift-info">
+        <h3>Diamond Necklace</h3>
+        <p>Beautiful handcrafted necklace with premium design.</p>
+        <div class="price">₹16,499</div>
+        <button class="buy-btn" data-name="Diamond Necklace" data-price="16499" data-image="https://dstarjewellery.com/wp-content/uploads/2021/08/p3.jpg">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Stunning Necklace -->
+    <div class="gift-card">
+      <img src="https://kinclimg8.bluestone.com/f_webp,c_scale,w_1024,b_rgb:f0f0f0/giproduct/BISL0819N02_RAA18DIG6XXXXXXXX_ABCD00-PICS-00001-1024-60363.png">
+      <div class="gift-info">
+        <h3>Stunning Necklace</h3>
+        <p>Stylish diamond jewelry crafted for special moments.</p>
+        <div class="price">₹1,199</div>
+        <button class="buy-btn" data-name="Stunning Necklace" data-price="1199" data-image="https://kinclimg8.bluestone.com/f_webp,c_scale,w_1024,b_rgb:f0f0f0/giproduct/BISL0819N02_RAA18DIG6XXXXXXXX_ABCD00-PICS-00001-1024-60363.png">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Pearl Necklace 2 -->
+    <div class="gift-card">
+      <img src="https://cdn.eternz.com/thumbnails/products/cspczp30_2_80aa2f7b_thumbnail_1024.jpg">
+      <div class="gift-info">
+        <h3>Pearl Necklace</h3>
+        <p>Stylish diamond jewelry crafted for special moments.</p>
+        <div class="price">₹13,499</div>
+        <button class="buy-btn" data-name="Pearl Necklace" data-price="13499" data-image="https://cdn.eternz.com/thumbnails/products/cspczp30_2_80aa2f7b_thumbnail_1024.jpg">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Diamond Ring -->
+    <div class="gift-card">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=1200&auto=format&fit=crop">
+      <div class="gift-info">
+        <h3>Diamond Ring</h3>
+        <p>Elegant gold ring with classy premium finishing.</p>
+        <div class="price">₹7,499</div>
+        <button class="buy-btn" data-name="Diamond Ring" data-price="7499" data-image="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=1200&auto=format&fit=crop">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Diamond Ring 2 -->
+    <div class="gift-card">
+      <img src="https://static.wixstatic.com/media/057f87_26e495b7753e4e058e4baf3efc811543~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/057f87_26e495b7753e4e058e4baf3efc811543~mv2.jpg">
+      <div class="gift-info">
+        <h3>Diamond Ring</h3>
+        <p>Luxury couple rings crafted for memorable occasions.</p>
+        <div class="price">₹8,499</div>
+        <button class="buy-btn" data-name="Diamond Ring" data-price="8499" data-image="https://static.wixstatic.com/media/057f87_26e495b7753e4e058e4baf3efc811543~mv2.jpg/v1/fill/w_980,h_980,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/057f87_26e495b7753e4e058e4baf3efc811543~mv2.jpg">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Diamond Ring 3 -->
+    <div class="gift-card">
+      <img src="https://m.media-amazon.com/images/I/61LsvkqTTGL._AC_UY1000_.jpg">
+      <div class="gift-info">
+        <h3>Diamond Ring</h3>
+        <p>Modern stylish ring collection with premium quality.</p>
+        <div class="price">₹9,299</div>
+        <button class="buy-btn" data-name="Diamond Ring" data-price="9299" data-image="https://m.media-amazon.com/images/I/61LsvkqTTGL._AC_UY1000_.jpg">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Diamond Ring 4 -->
+    <div class="gift-card">
+      <img src="https://www.pngjewellers.com/cdn/shop/files/DLR72331_C_bd5c3d5e-45ae-4d35-a462-21fadaa7b650.jpg?v=1772822214&width=1500">
+      <div class="gift-info">
+        <h3>Diamond Ring</h3>
+        <p>Exclusive golden ring with attractive elegant shine.</p>
+        <div class="price">₹10,499</div>
+        <button class="buy-btn" data-name="Diamond Ring" data-price="10499" data-image="https://www.pngjewellers.com/cdn/shop/files/DLR72331_C_bd5c3d5e-45ae-4d35-a462-21fadaa7b650.jpg?v=1772822214&width=1500">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Diamond Ring 5 -->
+    <div class="gift-card">
+      <img src="https://valleyrosestudio.com/cdn/shop/files/diamond-halo-stacking-ethical-wedding-ring_ulla-ring_valley-rose-2.png?v=1750414880&width=1080">
+      <div class="gift-info">
+        <h3>Diamond Ring</h3>
+        <p>Classic royal ring for premium gifting experience.</p>
+        <div class="price">₹9,999</div>
+        <button class="buy-btn" data-name="Diamond Ring" data-price="9999" data-image="https://valleyrosestudio.com/cdn/shop/files/diamond-halo-stacking-ethical-wedding-ring_ulla-ring_valley-rose-2.png?v=1750414880&width=1080">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Diamond Ring 6 -->
+    <div class="gift-card">
+      <img src="https://i.etsystatic.com/62168246/r/il/00589e/7262769932/il_300x300.7262769932_2akq.jpg">
+      <div class="gift-info">
+        <h3>Diamond Ring</h3>
+        <p>Classic royal ring for premium gifting experience.</p>
+        <div class="price">₹9,999</div>
+        <button class="buy-btn" data-name="Diamond Ring" data-price="9999" data-image="https://i.etsystatic.com/62168246/r/il/00589e/7262769932/il_300x300.7262769932_2akq.jpg">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Stylish Earrings -->
+    <div class="gift-card">
+      <img src="https://www.miabytanishq.com/dw/image/v2/BKCK_PRD/on/demandware.static/-/Sites-Tanishq-product-catalog/default/dwb023d50a/images/Mia/hi-res/2821HFV_1.jpg?sw=640&sh=640&sm=fit">
+      <div class="gift-info">
+        <h3>Stylish Earrings</h3>
+        <p>Elegant earrings with stylish modern finishing.</p>
+        <div class="price">₹5,999</div>
+        <button class="buy-btn" data-name="Stylish Earrings" data-price="5999" data-image="https://www.miabytanishq.com/dw/image/v2/BKCK_PRD/on/demandware.static/-/Sites-Tanishq-product-catalog/default/dwb023d50a/images/Mia/hi-res/2821HFV_1.jpg?sw=640&sh=640&sm=fit">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Earcuffs Earrings -->
+    <div class="gift-card">
+      <img src="https://hassanzadeh.co.uk/cdn/shop/files/8495_grande.webp?v=1710333630">
+      <div class="gift-info">
+        <h3>Earcuffs Earrings</h3>
+        <p>Premium silver earrings designed for classy looks.</p>
+        <div class="price">₹6,499</div>
+        <button class="buy-btn" data-name="Earcuffs Earrings" data-price="6499" data-image="https://hassanzadeh.co.uk/cdn/shop/files/8495_grande.webp?v=1710333630">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Stylish Earrings 2 -->
+    <div class="gift-card">
+      <img src="https://amalfa.in/cdn/shop/files/gold_stud_earrings_for_women.png?v=1766048653&width=1080">
+      <div class="gift-info">
+        <h3>Stylish Earrings</h3>
+        <p>Stylish earrings crafted with luxury design patterns.</p>
+        <div class="price">₹1,299</div>
+        <button class="buy-btn" data-name="Stylish Earrings" data-price="1299" data-image="https://amalfa.in/cdn/shop/files/gold_stud_earrings_for_women.png?v=1766048653&width=1080">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Hoops Earrings -->
+    <div class="gift-card">
+      <img src="https://trendisia.com/cdn/shop/products/gold-plated-circular-half-hoop-earrings-trendisia-1.jpg?v=1712313867">
+      <div class="gift-info">
+        <h3>Hoops Earrings</h3>
+        <p>Beautiful shining earrings for special occasions.</p>
+        <div class="price">₹1,199</div>
+        <button class="buy-btn" data-name="Hoops Earrings" data-price="1199" data-image="https://trendisia.com/cdn/shop/products/gold-plated-circular-half-hoop-earrings-trendisia-1.jpg?v=1712313867">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Pearl Earrings -->
+    <div class="gift-card">
+      <img src="https://d25g9z9s77rn4i.cloudfront.net/uploads/product/1255/1674709570_651a72231387595ad3c4.jpg">
+      <div class="gift-info">
+        <h3>Pearl Earrings</h3>
+        <p>Royal earrings collection with premium finishing.</p>
+        <div class="price">₹2,239</div>
+        <button class="buy-btn" data-name="Pearl Earrings" data-price="2239" data-image="https://d25g9z9s77rn4i.cloudfront.net/uploads/product/1255/1674709570_651a72231387595ad3c4.jpg">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Kashmiri Jhumka -->
+    <div class="gift-card">
+      <img src="https://www.theshoppingtree.in/cdn/shop/files/IMG_6904.jpg?v=1759835600&width=533">
+      <div class="gift-info">
+        <h3>Kashmiri Jhumka</h3>
+        <p>Elegant earrings with stylish modern finishing.</p>
+        <div class="price">₹2,399</div>
+        <button class="buy-btn" data-name="Kashmiri Jhumka" data-price="2399" data-image="https://www.theshoppingtree.in/cdn/shop/files/IMG_6904.jpg?v=1759835600&width=533">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Styling Anklet -->
+    <div class="gift-card">
+      <img src="https://kickyandperky.com/cdn/shop/files/SILANKCH002-5.jpg?v=1773644131">
+      <div class="gift-info">
+        <h3>Styling Anklet</h3>
+        <p>Elegant silver anklet with luxury premium finishing.</p>
+        <div class="price">₹1,294</div>
+        <button class="buy-btn" data-name="Styling Anklet" data-price="1294" data-image="https://kickyandperky.com/cdn/shop/files/SILANKCH002-5.jpg?v=1773644131">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Styling Anklet 2 -->
+    <div class="gift-card">
+      <img src="https://amalfa.in/cdn/shop/files/Gold_anklets.jpg?v=1763358122&width=2000">
+      <div class="gift-info">
+        <h3>Styling Anklet</h3>
+        <p>Designer anklet crafted for elegant fashion lovers.</p>
+        <div class="price">₹1,799</div>
+        <button class="buy-btn" data-name="Styling Anklet" data-price="1799" data-image="https://amalfa.in/cdn/shop/files/Gold_anklets.jpg?v=1763358122&width=2000">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Styling Anklet 3 -->
+    <div class="gift-card">
+      <img src="https://vonejewellery.in/cdn/shop/files/Peachy-20251111_133311780.jpg?v=1762866526">
+      <div class="gift-info">
+        <h3>Styling Anklet</h3>
+        <p>Premium anklet with modern stylish gold shine.</p>
+        <div class="price">₹1,219</div>
+        <button class="buy-btn" data-name="Styling Anklet" data-price="1219" data-image="https://vonejewellery.in/cdn/shop/files/Peachy-20251111_133311780.jpg?v=1762866526">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Confirm Popup Container -->
+    <div id="popup-message">
+      <div class="popup-box">
+        <h2>✅ Added Successfully</h2>
+        <p>Your product has been added to cart.</p>
+        <button id="ok-btn">OK</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-box">
+        <h2>LuxeGift</h2>
+        <p>Premium luxury gifting platform crafted for unforgettable memories and elegant surprises.</p>
+      </div>
+      <div class="footer-box">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../website/web(gift).html">Home</a></li>
+          <li><a href="../website/gift.html">Gifts</a></li>
+          <li><a href="../website/accessories.html">Accessories</a></li>
+          <li><a href="../website/flowers.html">Flowers</a></li>
+          <li><a href="../website/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-box">
+        <h3>Customer Support</h3>
+        <ul>
+          <li><a href="../website/help_center.html">Help Center</a></li>
+          <li><a href="../website/shipping_policy.html">Shipping Policy</a></li>
+          <li><a href="../website/privacy_policy.html">Privacy Policy</a></li>
+          <li><a href="../website/terms_conditions.html">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      <div class="footer-box">
+        <h3>Contact Us</h3>
+        <p>Email: support@luxegift.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Ahmedabad, Gujarat</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 LuxeGift | Luxury Online Gifting Experience
+    </div>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll(".buy-btn");
+    const popup = document.getElementById("popup-message");
+    const okBtn = document.getElementById("ok-btn");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const product = {
+          name: button.dataset.name.trim(),
+          price: button.dataset.price,
+          image: button.dataset.image
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        popup.classList.add("show");
+      });
+    });
+
+    okBtn.addEventListener("click", () => {
+      popup.classList.remove("show");
+      window.location.href = "";
+    });
+
+    function searchProduct(){
+      const value = document.getElementById("searchInput").value.toLowerCase().trim();
+
+      if(value.includes("watch") || value.includes("perfume") || value.includes("teddy") || value.includes("chocolate")){
+        window.location.href = "../website/gift.html?search=" + value;
+      }
+      else if(value.includes("necklace") || value.includes("ring") || value.includes("earring") || value.includes("anklet")){
+        window.location.href = "../website/accessories.html?search=" + value;
+      }
+      else if(value.includes("flower") || value.includes("bouquet")){
+        window.location.href = "../website/flowers.html?search=" + value;
+      }
+      else {
+        alert("Product not found");
+      }
+    }
+
+    document.getElementById("searchInput").addEventListener("keypress", function(e){
+      if(e.key === "Enter"){
+        searchProduct();
+      }
+    });
+  </script>
+</body>
+</html>
