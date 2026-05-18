@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LuxeGift Order Form</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- JQUERY VALIDATION -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+   body{
+  background:
+  linear-gradient(
+  135deg,
+  #242527 0%,
+  #2F4A61 35%,
+  #5F8396 65%,
+  #6F6558 85%,
+  #BCB9AC 100%);
+
+  min-height:100vh;
+  overflow-x:hidden;
+  color:#f5f5f5;
+
+  display:flex;
+  flex-direction:column;
+
+  padding-top:150px;
+}
+
+    body::before{
+      content:'';
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:rgba(188,185,172,0.12);
+      border-radius:50%;
+      top:-250px;
+      left:-200px;
+      z-index:-1;
+      filter:blur(80px);
+    }
+
+    body::after{
+      content:'';
+      position:absolute;
+      width:650px;
+      height:650px;
+      background:rgba(95,131,150,0.18);
+      border-radius:50%;
+      bottom:-250px;
+      right:-200px;
+      z-index:-1;
+      filter:blur(80px);
+    }
+
+nav{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:85%;
+  z-index:9999;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:20px 50px;
+  border-radius:25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+.search-box{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.search-box input{
+  width:260px;
+  padding:12px 18px;
+  border:none;
+  outline:none;
+  border-radius:14px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.1);
+  color:#fff;
+  font-size:0.95rem;
+}
+
+.search-box input::placeholder{
+  color:#ddd;
+}
+
+.search-box button{
+  padding:12px 20px;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(to right,#BCB9AC,#d9d4ca);
+  color:#1d2731;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.logo{
+  font-size:2.3rem;
+  font-weight:700;
+  color:#f0e7d8;
+  letter-spacing:1px;
+}
+
+nav ul{
+  display:flex;
+  gap:40px;
+  list-style:none;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:#f5f5f5;
+  font-size:1rem;
+  font-weight:500;
+  transition:0.3s;
+}
+
+nav ul li a:hover{
+  color:#BCB9AC;
+}
+
+.main-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px 60px;
+}
+
+.container{
+  width:500px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:35px;
+  border-radius:30px;
+  box-shadow:0 10px 35px rgba(0,0,0,0.35);
+  color:#fff;
+}
+
+.container h2{
+  text-align:center;
+  margin-bottom:30px;
+  color:#f0e7d8;
+  font-size:2.3rem;
+  font-family:Georgia, serif;
+}
+
+.form-group{
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:500;
+  color:#f1ece2;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:14px 16px;
+  border:none;
+  outline:none;
+  border-radius:14px;
+  background:rgba(255,255,255,0.12);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.08);
+  font-size:0.95rem;
+}
+
+input::placeholder,
+textarea::placeholder{
+  color:#dddddd;
+}
+
+select{
+  color:#fff;
+}
+
+select option{
+  color:#000;
+}
+
+textarea{
+  resize:none;
+  height:90px;
+}
+
+.address-input{
+  margin-bottom:12px;
+}
+
+.btn{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:15px;
+  background:linear-gradient(to right,#BCB9AC,#d9d4ca);
+  color:#1d2731;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+  margin-top:10px;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(0,0,0,0.25);
+}
+
+/* JQUERY ERROR STYLE */
+
+label.error{
+  color:#ffd2d2;
+  font-size:13px;
+  margin-top:6px;
+  display:block;
+}
+
+/* CENTER POPUP */
+
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.65);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+}
+
+.popup-content{
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(20px);
+  padding:35px;
+  border-radius:25px;
+  text-align:center;
+  width:350px;
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.1);
+  animation:popupShow 0.4s ease;
+}
+
+.popup-content h3{
+  color:#f0e7d8;
+  margin-bottom:12px;
+  font-size:1.8rem;
+}
+
+.popup-content p{
+  margin-bottom:20px;
+  color:#e4e4e4;
+}
+
+.popup-content button{
+  padding:12px 25px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(to right,#BCB9AC,#d9d4ca);
+  color:#1d2731;
+  cursor:pointer;
+  font-weight:600;
+}
+
+@keyframes popupShow{
+  from{
+    transform:scale(0.7);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+footer{
+  width:85%;
+  margin:70px auto 35px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:28px;
+  padding:45px 40px 20px;
+  color:#f1ece2;
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+.footer-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:35px;
+}
+
+.footer-box h2{
+  font-size:2rem;
+  margin-bottom:15px;
+  color:#f0e7d8;
+}
+
+.footer-box h3{
+  margin-bottom:18px;
+  color:#ffffff;
+  font-size:1.2rem;
+}
+
+.footer-box p{
+  color:#dddddd;
+  line-height:1.8;
+  font-size:0.95rem;
+}
+
+.footer-box ul{
+  list-style:none;
+}
+
+.footer-box ul li{
+  margin-bottom:12px;
+}
+
+.footer-box ul li a{
+  text-decoration:none;
+  color:#dddddd;
+  transition:0.3s;
+}
+
+.footer-box ul li a:hover{
+  color:#ffffff;
+  padding-left:5px;
+}
+
+.footer-bottom{
+  margin-top:35px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  text-align:center;
+  color:#e0e0e0;
+  font-size:0.95rem;
+}
+
+@media(max-width:768px){
+
+  nav{
+    flex-direction:column;
+    gap:20px;
+    padding:20px;
+  }
+
+  nav ul{
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .container{
+    width:100%;
+  }
+
+  footer{
+    padding:35px 20px 20px;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+<nav>
+
+  <div class="logo">LuxeGift</div>
+
+  <div class="search-box">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search products..."
+    >
+
+    <button onclick="searchProduct()">
+      Search
+    </button>
+
+  </div>
+
+  <ul>
+
+    <li><a href="../website/web(gift).html">Home</a></li>
+
+    <li><a href="../website/gift.html">Gifts</a></li>
+
+    <li><a href="../website/accessories.html">Accessories</a></li>
+
+    <li><a href="../website/flowers.html">Flowers</a></li>
+
+    <li><a href="../website/cart.html">Cart</a></li>
+
+    <li><a href="../website/login.html">Login</a></li>
+
+  </ul>
+
+</nav>
+
+<div class="main-container">
+
+  <div class="container">
+
+    <h2>Gift Order Form</h2>
+
+    <form id="giftForm">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="name" id="name" placeholder="Enter your full name">
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="text" name="email" id="email" placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" name="phone" id="phone" placeholder="Enter 10 digit number">
+      </div>
+
+      <div class="form-group">
+
+        <label>Select State</label>
+
+        <select id="state" name="state">
+
+          <option value="">-- Select State --</option>
+
+          <option>Goa</option>
+          <option>Gujarat</option>
+          <option>Karnataka</option>
+          <option>Kerala</option>
+          <option>Madhya Pradesh</option>
+          <option>Maharashtra</option>
+          <option>Punjab</option>
+          <option>Rajasthan</option>
+          <option>Tamil Nadu</option>
+
+        </select>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Delivery Address</label>
+
+        <input class="address-input" type="text" name="address1" id="address1" placeholder="House & Floor No.">
+
+        <input class="address-input" type="text" name="address2" id="address2" placeholder="Building & Block No.">
+
+        <input type="text" name="address3" id="address3" placeholder="Landmark & Area Name">
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Select Payment Method</label>
+
+        <select id="payment" name="payment">
+
+          <option value="">-- Select Payment Method --</option>
+
+          <option>Credit Card</option>
+          <option>Debit Card</option>
+          <option>UPI</option>
+          <option>Google Pay</option>
+          <option>PhonePe</option>
+          <option>Paytm</option>
+          <option>Cash on Delivery</option>
+
+        </select>
+
+      </div>
+
+      <button type="submit" class="btn">
+        Place Order
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- CENTER POPUP -->
+
+<div class="popup" id="popup">
+
+  <div class="popup-content">
+
+    <h3>🎉 Order Successful</h3>
+
+    <p>Your LuxeGift order has been placed successfully.</p>
+
+    <button onclick="closePopup()">OK</button>
+
+  </div>
+
+</div>
+
+<footer>
+
+  <div class="footer-container">
+
+    <div class="footer-box">
+
+      <h2>LuxeGift</h2>
+
+      <p>
+        Premium luxury gifting platform crafted for unforgettable
+        memories and elegant surprises.
+      </p>
+
+    </div>
+
+    <div class="footer-box">
+
+      <h3>Quick Links</h3>
+
+      <ul>
+        <li><a href="../website/web(gift).html">Home</a></li>
+        <li><a href="../website/gift.html">Gifts</a></li>
+        <li><a href="../website/accessories.html">Accessories</a></li>
+        <li><a href="../website/flowers.html">Flowers</a></li>
+        <li><a href="../website/contact.html">Contact</a></li>
+      </ul>
+
+    </div>
+
+    <div class="footer-box">
+
+      <h3>Customer Support</h3>
+
+      <ul>
+        <li><a href="../website/help_center.html">Help Center</a></li>
+        <li><a href="../website/shipping_policy.html">Shipping Policy</a></li>
+        <li><a href="../website/privacy_policy.html">Privacy Policy</a></li>
+        <li><a href="../website/terms_conditions.html">Terms & Conditions</a></li>
+      </ul>
+
+    </div>
+
+    <div class="footer-box">
+
+      <h3>Contact Us</h3>
+
+      <p>Email: support@luxegift.com</p>
+
+      <p>Phone: +91 98765 43210</p>
+
+      <p>Ahmedabad, Gujarat</p>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+
+    © 2026 LuxeGift | Luxury Online Gifting Experience
+
+  </div>
+
+</footer>
+
+<script>
+
+$(document).ready(function(){
+
+  $("#giftForm").validate({
+
+    rules:{
+
+      name:{
+        required:true,
+        minlength:3
+      },
+
+      email:{
+        required:true,
+        email:true
+      },
+
+      phone:{
+        required:true,
+        digits:true,
+        minlength:10,
+        maxlength:10
+      },
+
+      state:{
+        required:true
+      },
+
+      address1:{
+        required:true
+      },
+
+      address2:{
+        required:true
+      },
+
+      address3:{
+        required:true
+      },
+
+      payment:{
+        required:true
+      }
+
+    },
+
+    messages:{
+
+      name:{
+        required:"Please enter your full name",
+        minlength:"Minimum 3 characters required"
+      },
+
+      email:{
+        required:"Please enter email",
+        email:"Enter valid email address"
+      },
+
+      phone:{
+        required:"Please enter phone number",
+        digits:"Only numbers allowed",
+        minlength:"Enter valid 10 digit number",
+        maxlength:"Enter valid 10 digit number"
+      },
+
+      state:{
+        required:"Please select your state"
+      },
+
+      address1:{
+        required:"Please enter house number"
+      },
+
+      address2:{
+        required:"Please enter building name"
+      },
+
+      address3:{
+        required:"Please enter area name"
+      },
+
+      payment:{
+        required:"Please select payment method"
+      }
+
+    },
+
+    submitHandler:function(form){
+
+      $("#popup").css("display","flex");
+
+      form.reset();
+
+    }
+
+  });
+
+});
+
+function closePopup(){
+
+  $("#popup").hide();
+
+}
+
+/* SEARCH FUNCTION */
+
+function searchProduct(){
+
+  const value =
+  document.getElementById(
+    "searchInput"
+  ).value.toLowerCase().trim();
+
+  if(
+    value.includes("watch") ||
+    value.includes("perfume") ||
+    value.includes("teddy") ||
+    value.includes("chocolate")
+  ){
+
+    window.location.href =
+    "../website/gift.html?search=" + value;
+
+  }
+
+  else if(
+    value.includes("necklace") ||
+    value.includes("ring") ||
+    value.includes("earring") ||
+    value.includes("anklet")
+  ){
+
+    window.location.href =
+    "../website/accessories.html?search=" + value;
+
+  }
+
+  else if(
+    value.includes("flower") ||
+    value.includes("bouquet")
+  ){
+
+    window.location.href =
+    "../website/flowers.html?search=" + value;
+
+  }
+
+  else{
+
+    alert("Product not found");
+
+  }
+
+}
+
+/* ENTER KEY SUPPORT */
+
+document
+.getElementById("searchInput")
+.addEventListener("keypress",function(e){
+
+  if(e.key === "Enter"){
+    searchProduct();
+  }
+
+});
+
+</script>
+
+</body>
+</html>
