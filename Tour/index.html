@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WanderVerse Tourism</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#07111f;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* NAVBAR */
+
+    .navbar{
+      background:rgba(0,0,0,0.5);
+      -webkit-backdrop-filter: blur(100);
+      backdrop-filter:blur(10px);
+      padding:15px 40px;
+    }
+
+    .navbar-brand{
+      font-size:30px;
+      font-weight:700;
+      color:#00d4ff !important;
+    }
+
+    .nav-link{
+      color:white !important;
+      margin-left:20px;
+      transition:0.3s;
+    }
+
+    .nav-link:hover{
+      color:#00d4ff !important;
+    }
+
+    /* HERO */
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero-content h1{
+      font-size:70px;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .hero-content p{
+      font-size:20px;
+      max-width:800px;
+      margin:auto;
+      margin-bottom:30px;
+    }
+
+    .hero-btn{
+      padding:14px 35px;
+      border:none;
+      border-radius:50px;
+      background:#00d4ff;
+      color:black;
+      font-weight:600;
+      transition:0.4s;
+    }
+
+    .hero-btn:hover{
+      transform:translateY(-5px);
+      background:white;
+    }
+
+    /* SEARCH */
+
+    .search-section{
+      margin-top:-60px;
+      z-index:5;
+      position:relative;
+    }
+
+    .search-box{
+      background:white;
+      padding:25px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .search-box input{
+      height:55px;
+      border-radius:12px;
+    }
+
+    .search-btn{
+      width:100%;
+      height:55px;
+      border:none;
+      border-radius:12px;
+      background:#00d4ff;
+      font-weight:600;
+    }
+
+    /* SECTION */
+
+    .section-title{
+      text-align:center;
+      margin-top:80px;
+      margin-bottom:50px;
+    }
+
+    .section-title h2{
+      font-size:45px;
+      font-weight:700;
+      color:#00d4ff;
+    }
+
+    .section-title p{
+      color:#bbb;
+    }
+
+    /* PLACE CARD */
+
+    .place-card{
+      background:#111c2d;
+      border-radius:25px;
+      overflow:hidden;
+      transition:0.4s;
+      height:100%;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .place-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 10px 30px rgba(0,212,255,0.25);
+    }
+
+    .place-card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+    }
+
+    .card-body{
+      padding:25px;
+    }
+
+    .place-title{
+      font-size:24px;
+      font-weight:600;
+      margin-bottom:15px;
+    }
+
+    .info{
+      margin-bottom:10px;
+      font-size:14px;
+      color:#d6d6d6;
+    }
+
+    .info i{
+      color:#00d4ff;
+      margin-right:8px;
+    }
+
+    .place-description{
+      margin-top:15px;
+      color:#b8b8b8;
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .btns{
+      display:flex;
+      gap:10px;
+      margin-top:20px;
+    }
+
+    .custom-btn{
+      flex:1;
+      border:none;
+      padding:12px;
+      border-radius:12px;
+      font-weight:600;
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    .view-btn{
+      background:#00d4ff;
+      color:black;
+    }
+
+    .hotel-btn{
+      background:#1d2b45;
+      color:white;
+    }
+
+    .gallery-btn{
+      background:#ffb703;
+      color:black;
+    }
+
+    .custom-btn:hover{
+      transform:translateY(-3px);
+    }
+
+    /* 360 SECTION */
+
+    .virtual-tour{
+      margin-top:100px;
+      padding:80px 20px;
+      background:linear-gradient(to right,#081120,#0d1d35);
+    }
+
+    .tour-box{
+      background:#111c2d;
+      padding:30px;
+      border-radius:25px;
+    }
+
+    iframe{
+      width:100%;
+      height:500px;
+      border:none;
+      border-radius:20px;
+    }
+
+   /* NEW FOOTER */
+
+.new-footer{
+  margin-top:100px;
+  background:linear-gradient(to right,#020817,#071120);
+  padding:80px 20px 30px;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer-logo{
+  font-size:42px;
+  font-weight:700;
+  color:#00d4ff;
+  margin-bottom:20px;
+}
+
+.footer-text{
+  color:#b8b8b8;
+  line-height:1.9;
+  font-size:15px;
+}
+
+.footer-heading{
+  color:white;
+  margin-bottom:25px;
+  font-size:22px;
+  font-weight:600;
+}
+
+.footer-links{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.footer-links a{
+  color:#b8b8b8;
+  text-decoration:none;
+  transition:0.3s;
+  font-size:15px;
+}
+
+.footer-links a:hover{
+  color:#00d4ff;
+  padding-left:6px;
+}
+
+.social-icons a{
+  text-decoration:none;
+}
+
+.social-icons i{
+  width:48px;
+  height:48px;
+  background:#0f1e35;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:18px;
+  transition:0.3s;
+}
+
+.social-icons i:hover{
+  background:#00d4ff;
+  color:black;
+  transform:translateY(-5px);
+}
+
+.contact-info p{
+  color:#b8b8b8;
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:15px;
+}
+
+.contact-info i{
+  color:#00d4ff;
+  font-size:18px;
+}
+
+.footer-bottom{
+  margin-top:60px;
+  padding-top:25px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.footer-bottom p{
+  color:#9ca3af;
+  margin:0;
+  font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .footer-bottom{
+    flex-direction:column;
+    text-align:center;
+  }
+
+}
+
+    /* GALLERY MODAL */
+
+    .gallery-modal{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100vh;
+      background:rgba(0,0,0,0.92);
+      z-index:999999;
+      display:none;
+      justify-content:center;
+      align-items:center;
+      padding:30px;
+    }
+
+    .gallery-content{
+      width:90%;
+      max-width:1400px;
+      background:linear-gradient(to right,#081120,#0d1d35);
+      border-radius:30px;
+      padding:35px;
+      position:relative;
+    }
+
+    .gallery-content h2{
+      text-align:center;
+      color:#00d4ff;
+      font-size:55px;
+      font-weight:700;
+      margin-bottom:35px;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .gallery-grid img{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      border-radius:25px;
+      transition:0.4s;
+      cursor:pointer;
+    }
+
+    .gallery-grid img:hover{
+      transform:scale(1.05);
+      box-shadow:0 10px 25px rgba(0,212,255,0.4);
+    }
+
+    .close-gallery{
+      position:absolute;
+      top:20px;
+      right:30px;
+      font-size:45px;
+      color:white;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .close-gallery:hover{
+      color:#00d4ff;
+      transform:rotate(90deg);
+    }
+
+    /* AI BUDGET PLANNER */
+
+.budget-box{
+  margin-top:80px;
+  background:#111c2d;
+  padding:40px;
+  border-radius:25px;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.budget-input{
+  height:55px;
+  border-radius:12px;
+  border:none;
+}
+
+.budget-btn{
+  width:100%;
+  height:55px;
+  border:none;
+  border-radius:12px;
+  background:#00d4ff;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.budget-btn:hover{
+  transform:translateY(-3px);
+  background:white;
+}
+
+.budget-result{
+  background:#0b1728;
+  padding:25px;
+  border-radius:20px;
+  color:#d6d6d6;
+  line-height:1.8;
+  display:none;
+}
+
+.budget-result h4{
+  color:#00d4ff;
+  margin-bottom:15px;
+}
+
+    @media(max-width:768px){
+
+      .hero-content h1{
+        font-size:45px;
+      }
+
+      .hero-content p{
+        font-size:16px;
+      }
+
+      .gallery-content h2{
+        font-size:35px;
+      }
+
+      .gallery-grid img{
+        height:220px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="#">WanderVerse</a>
+
+    <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNav">
+
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#places">Places</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#tour">World Map</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#budgetPlanner">Budget Planner</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <h1>Explore The World Virtually</h1>
+
+    <p>
+      Discover beautiful tourist destinations,
+      immersive galleries and virtual tourism experiences.
+    </p>
+
+    <button class="hero-btn" onclick="goToPlaces()">
+      Explore Destinations
+    </button>
+
+  </div>
+
+</section>
+
+<!-- SEARCH -->
+
+<div class="container search-section">
+
+  <div class="search-box">
+
+    <div class="row g-3">
+
+      <div class="col-lg-9">
+
+        <input type="text"
+        id="searchInput"
+        class="form-control"
+        placeholder="Search tourist places...">
+
+      </div>
+
+      <div class="col-lg-3">
+
+        <button class="search-btn">
+          Search Now
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- PLACES -->
+
+<section id="places" class="container">
+
+  <div class="section-title">
+
+    <h2>Top Tourist Destinations</h2>
+
+    <p>Discover famous places around the world</p>
+
+  </div>
+
+  <div class="row g-4" id="placesContainer">
+
+    <!-- CARD-1 -->
+
+    <div class="col-lg-4 col-md-6 place-item">
+
+      <div class="place-card">
+
+        <img src="https://www.swantour.com/blogs/wp-content/uploads/2016/10/Arambol-Beach-Goa.jpg" alt="North Goa ">
+
+        <div class="card-body">
+
+          <h3 class="place-title">North Goa</h3>
+
+          <div class="info">
+            <i class="fa-solid fa-location-dot"></i>
+            Goa, India
+          </div>
+
+          <div class="info">
+            <i class="fa-solid fa-clock"></i>
+            Open 24 Hours
+          </div>
+
+          <p class="place-description">
+            North Goa is famous for beaches,
+            nightlife and tourism attractions.
+          </p>
+
+          <div class="btns">
+
+            <button class="custom-btn view-btn">
+              360° View
+            </button>
+
+            <button class="custom-btn hotel-btn">
+              Hotels
+            </button>
+
+            <button class="custom-btn gallery-btn">
+              Gallery
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CARD-2 -->
+
+    <div class="col-lg-4 col-md-6 place-item">
+
+      <div class="place-card">
+
+        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070" alt="Taj Mahal">
+
+        <div class="card-body">
+
+          <h3 class="place-title">Taj Mahal</h3>
+
+          <div class="info">
+            <i class="fa-solid fa-location-dot"></i>
+            Agra, India
+          </div>
+
+          <div class="info">
+            <i class="fa-solid fa-clock"></i>
+            6:30 AM - 7 PM
+          </div>
+
+          <p class="place-description">
+            One of the seven wonders of the world
+            and symbol of eternal love.
+          </p>
+
+          <div class="btns">
+
+            <button class="custom-btn view-btn">
+              360° View
+            </button>
+
+            <button class="custom-btn hotel-btn">
+              Hotels
+            </button>
+
+            <button class="custom-btn gallery-btn">
+              Gallery
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- CARD-3 -->
+
+    <div class="col-lg-4 col-md-6 place-item">
+
+      <div class="place-card">
+
+        <img src="https://assets.vogue.in/photos/5ce41ea8b803113d138f5cd2/4:3/w_1440,h_1080,c_limit/Jaipur-Travel-Shopping-Restaurants.jpg" alt="Jaipur">
+
+        <div class="card-body">
+
+          <h3 class="place-title">Jaipur</h3>
+
+          <div class="info">
+            <i class="fa-solid fa-location-dot"></i>
+            Rajasthan, India
+          </div>
+
+          <div class="info">
+            <i class="fa-solid fa-clock"></i>
+            Open 24 Hours
+          </div>
+
+          <p class="place-description">
+            Jaipur is known as the Pink City,
+            famous for forts and palaces.
+          </p>
+
+          <div class="btns">
+
+            <button class="custom-btn view-btn">
+              360° View
+            </button>
+
+            <button class="custom-btn hotel-btn">
+              Hotels
+            </button>
+
+            <button class="custom-btn gallery-btn">
+              Gallery
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    
+      <!-- CARD 4 -->
+
+      <div class="col-lg-4 col-md-6 place-item">
+
+        <div class="place-card">
+
+          <img src="https://www.cdn.travejar.com/storage/tour_images/16805211920.jpg" alt="South Maldives">
+
+          <div class="card-body">
+
+            <h3 class="place-title">South Maldives</h3>
+
+            <div class="info">
+              <i class="fa-solid fa-location-dot"></i>
+              South Maldives, India
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-clock"></i>
+              Open 24 Hours
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-ticket"></i>
+              Resort Entry paid 8,000-15,000 INR  
+            </div>
+
+            <p class="place-description">
+            The South Maldives (like the Addu Atoll) is famous for its pristine, untouched coral reefs, vibrant marine biodiversity (including manta rays and whale sharks), and tranquil, less-crowded luxury resorts.  
+            </p>
+
+            <div class="btns">
+
+            <button class="custom-btn view-btn">
+              360° View
+            </button>
+
+            <button class="custom-btn hotel-btn">
+              Hotels
+            </button>
+
+            <button class="custom-btn gallery-btn">
+              Gallery
+            </button>
+
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 5 -->
+
+      <div class="col-lg-4 col-md-6 place-item">
+
+        <div class="place-card">
+
+          <img src="https://sun-b2b.s3.us-east-2.amazonaws.com/tour/The%20Red%20Fort%20Delhi%20SLW.jpg " alt="Agra Fort"> 
+
+          <div class="card-body">
+
+            <h3 class="place-title">Agra Fort</h3>
+
+            <div class="info">
+              <i class="fa-solid fa-location-dot"></i>
+              Agra, India
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-clock"></i>
+              9:30 AM - 5:30 PM (TUE - SUN)
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-ticket"></i>
+              Entry: ₹150
+            </div>
+
+            <p class="place-description">
+              The Agra Fort is a UNESCO World Heritage Site and one of the most iconic landmarks in Agra.It is a symbol of the rich history of the Indian subcontinent.
+            </p>
+
+            <div class="btns">
+
+            <button class="custom-btn view-btn">
+              360° View
+            </button>
+
+            <button class="custom-btn hotel-btn">
+              Hotels
+            </button>
+
+            <button class="custom-btn gallery-btn">
+              Gallery
+            </button>
+
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 6 -->
+
+      <div class="col-lg-4 col-md-6 place-item">
+
+        <div class="place-card">
+
+          <img src="https://www.airpano.ru/files/fatehpur-sikri-india/images/image4.jpg" alt="Fatehpur Sikri">
+
+          <div class="card-body">
+
+            <h3 class="place-title">Fatehpur Sikri</h3>
+
+            <div class="info">
+              <i class="fa-solid fa-location-dot"></i>
+              Agra, India
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-clock"></i>
+              6:00 AM - 6:00 PM
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-ticket"></i>
+              Entry: ₹120
+            </div>
+
+            <p class="place-description">
+              Fatehpur Sikri is famous as a well-preserved 16th-century Mughal ghost town. Built by Emperor Akbar, this UNESCO World Heritage Site features a stunning blend of Hindu and Persian architecture
+            </p>
+
+            <div class="btns">
+
+            <button class="custom-btn view-btn">
+              360° View
+            </button>
+
+            <button class="custom-btn hotel-btn">
+              Hotels
+            </button>
+
+            <button class="custom-btn gallery-btn">
+              Gallery
+            </button>
+
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 7 -->
+
+      <div class="col-lg-4 col-md-6 place-item">
+
+        <div class="place-card">
+
+          <img src="https://akshardham.com/newdelhi/wp-content/uploads/2015/05/akshardham_monument_with_sarovar-002.jpg" alt="Delhi Akshardham">
+
+          <div class="card-body">
+
+            <h3 class="place-title">Delhi Akshardham</h3>
+
+            <div class="info">
+              <i class="fa-solid fa-location-dot"></i>
+              Delhi, India
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-clock"></i>
+              10:00 AM - 6:30 PM (TUE - SUN)
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-ticket"></i>
+              Entry: ₹150
+            </div>
+
+            <p class="place-description">
+              Delhi Akshardham is famous for being the world's largest comprehensive Hindu temple. It is renowned for its stunning ancient architecture, intricate stone carvings, sprawling gardens, and a mesmerizing musical fountain show. 
+            </p>
+
+            <div class="btns">
+
+            <button class="custom-btn view-btn">
+              360° View
+            </button>
+
+            <button class="custom-btn hotel-btn">
+              Hotels
+            </button>
+
+            <button class="custom-btn gallery-btn">
+              Gallery
+            </button>
+
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 8 -->
+
+      <div class="col-lg-4 col-md-6 place-item">
+
+        <div class="place-card">
+
+          <img src="https://www.learnreligions.com/thmb/9X3gLTQoakHFwLcKOxGPGWtm924=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/evening-at-varanasi-610625330-58e54bd25f9b58ef7e7c8bb9.jpg" alt="Varanasi">
+
+          <div class="card-body">
+
+            <h3 class="place-title">Varanasi</h3>
+
+            <div class="info">
+              <i class="fa-solid fa-location-dot"></i>
+              Uttar Pradesh, India
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-clock"></i>
+              6:00 AM - 9:00 PM
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-ticket"></i>
+              Entry: Free
+            </div>
+
+            <p class="place-description">
+              Varanasi is famous as India's spiritual capital. Located on the Ganges, it is one of the world's oldest living cities, renowned for its sacred ghats, nightly Ganga Aarti, and exquisite traditional Banarasi silk. 
+            </p>
+
+            <div class="btns">
+
+            <button class="custom-btn view-btn">
+              360° View
+            </button>
+
+            <button class="custom-btn hotel-btn">
+              Hotels
+            </button>
+
+            <button class="custom-btn gallery-btn">
+              Gallery
+            </button>
+
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CARD 9 -->
+
+      <div class="col-lg-4 col-md-6 place-item">
+
+        <div class="place-card">
+
+          <img src="https://travelogyindia.b-cdn.net/storage/app/upload/havelock-island-in-andaman-banner.jpg" alt="Andaman Island">
+
+          <div class="card-body">
+
+            <h3 class="place-title">Andaman Island</h3>
+
+            <div class="info">
+              <i class="fa-solid fa-location-dot"></i>
+              Andaman and Nicobar Islands, India
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-clock"></i>
+              Open 24 Hours
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-ticket"></i>
+              Resort Entry paid 5,000-10,000 INR
+            </div>
+
+            <p class="place-description">
+              The Andaman Islands are famous for their pristine white-sand beaches (like Radhanagar), crystal-clear turquoise waters, and vibrant coral reefs. They are a top destination for scuba diving, water sports, and rich marine biodiversity. 
+            </p>
+
+            <div class="btns">
+
+              <button class="custom-btn view-btn">
+                360° View
+              </button>
+
+              <button class="custom-btn hotel-btn">
+                Hotels
+              </button>
+
+              <button class="custom-btn gallery-btn">
+                Gallery
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+            <!-- CARD 10 -->
+
+      <div class="col-lg-4 col-md-6 place-item">
+
+        <div class="place-card">
+
+          <img src="https://travelogyindia.b-cdn.net/blog/wp-content/uploads/2018/09/Mustang.jpg" alt="Kathmandu">
+
+          <div class="card-body">
+
+            <h3 class="place-title">Kathmandu</h3>
+
+            <div class="info">
+              <i class="fa-solid fa-location-dot"></i>
+              Kathmandu, Nepal
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-clock"></i>
+              Open 24 Hours
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-ticket"></i>
+              Entry: ₹570
+            </div>
+
+            <p class="place-description">
+              Kathmandu is world-renowned for its stunning ancient temples, rich cultural heritage, and UNESCO-listed Kathmandu Durbar Square. It serves as Nepal's bustling capital and the primary gateway to the Himalayas. 
+            </p>
+
+           <div class="btns">
+
+            <button class="custom-btn view-btn">
+              360° View
+            </button>
+
+            <button class="custom-btn hotel-btn">
+              Hotels
+            </button>
+
+            <button class="custom-btn gallery-btn">
+              Gallery
+            </button>
+
+          </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+            <!-- CARD 11 -->
+
+      <div class="col-lg-4 col-md-6 place-item">
+
+        <div class="place-card">
+
+          <img src="https://www.tibetfocus.travel/wp-content/uploads/2019/12/Winter-travel-to-Tibet.jpg" alt="Tibet">
+
+          <div class="card-body">
+
+            <h3 class="place-title">Tibet</h3>
+
+            <div class="info">
+              <i class="fa-solid fa-location-dot"></i>
+              Tibet Autonomous Region, China
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-clock"></i>
+              Open 24 Hours
+            </div>
+
+            <div class="info">
+              <i class="fa-solid fa-ticket"></i>
+              Entry: ₹500
+            </div>
+
+            <p class="place-description">
+             Tibet is famous as the "Roof of the World" and the "Land of Snows". It is globally renowned for its breathtaking Himalayan landscapes, ancient Buddhist monasteries, and as the traditional residence of the Dalai Lama. 
+            </p>
+
+            <div class="btns">
+
+              <button class="custom-btn view-btn">
+                360° View
+              </button>
+
+              <button class="custom-btn hotel-btn">
+                Hotels
+              </button>
+
+              <button class="custom-btn gallery-btn">
+                Gallery
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+  </div>
+
+</section>
+
+
+<!-- AI BUDGET PLANNER -->
+
+<section id="budgetPlanner" class="container mt-5">
+
+  <div class="budget-box">
+
+    <div class="section-title">
+      <h2>AI Vacation Budget Planner</h2>
+      <p>Enter your budget and let AI suggest best destinations</p>
+    </div>
+
+    <div class="row g-4 align-items-center">
+
+      <div class="col-lg-4">
+        <input
+          type="number"
+          id="budgetInput"
+          class="form-control budget-input"
+          placeholder="Enter Budget in ₹"
+        >
+      </div>
+
+      <div class="col-lg-3">
+        <select id="tripType" class="form-select budget-input" title="Trip Type">
+
+          <option value="">Trip Type</option>
+          <option>Solo</option>
+          <option>Family</option>
+          <option>Friends</option>
+          <option>Couple</option>
+
+        </select>
+      </div>
+
+      <div class="col-lg-3">
+        <select id="daysInput" class="form-select budget-input" title="Vacation Days">
+
+          <option value="">Vacation Days</option>
+          <option>2</option>
+          <option>4</option>
+          <option>6</option>
+          <option>8</option>
+          <option>10</option>
+
+        </select>
+      </div>
+
+      <div class="col-lg-2">
+        <button class="budget-btn" onclick="suggestPlaces()">
+          Find Places
+        </button>
+      </div>
+
+    </div>
+
+    <div id="budgetResult" class="budget-result mt-4"></div>
+
+  </div>
+
+</section>
+
+ <!-- 360 TOUR -->
+
+  <section id="tour" class="virtual-tour">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>360° Virtual Tour</h2>
+        <p>Experience destinations virtually before visiting</p>
+      </div>
+
+      <div class="tour-box">
+
+        <iframe
+          title="360° Virtual Tour Map"
+          src="https://www.google.com/maps/embed?pb=!4v1716100000000">
+        </iframe>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- 360 VIEW MODAL -->
+
+<div class="tour-modal" id="tourModal">
+
+  <span class="close-tour" id="closeTour">
+    <i class="fa-solid fa-xmark"></i>
+  </span>
+
+  <div id="panoramaViewer"></div>
+
+</div>
+
+
+<!-- GALLERY MODAL -->
+
+<div class="gallery-modal" id="galleryModal">
+
+  <div class="gallery-content">
+
+    <span class="close-gallery" id="closeGallery">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
+
+    <h2 id="galleryTitle">Gallery</h2>
+
+    <div class="gallery-grid" id="galleryGrid">
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="new-footer">
+
+  <div class="container">
+
+    <div class="row g-5">
+
+      <!-- BRAND -->
+
+      <div class="col-lg-4">
+
+        <h2 class="footer-logo">
+          WanderVerse
+        </h2>
+
+        <p class="footer-text">
+          WanderVerse helps travelers explore the world virtually with
+          immersive 360° tours, destination guides, hotel discovery,
+          and smart AI vacation planning.
+        </p>
+
+        <div class="social-icons d-flex gap-3 mt-4">
+
+          <a href="#" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+
+          <a href="#" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+
+          <a href="#" aria-label="X (Twitter)" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+
+          <a href="#" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+
+          <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+
+        </div>
+
+      </div>
+
+      <!-- QUICK LINKS -->
+
+      <div class="col-lg-2 col-md-6">
+
+        <h4 class="footer-heading">
+          Quick Links
+        </h4>
+
+        <div class="footer-links">
+
+          <a href="#">Home</a>
+
+          <a href="#places">Places</a>
+
+          <a href="#tour">360 Tour</a>
+
+          <a href="#budgetPlanner">Budget Planner</a>
+
+          <a href="#contact">Contact</a>
+
+        </div>
+
+      </div>
+
+      <!-- SERVICES -->
+
+      <div class="col-lg-3 col-md-6">
+
+        <h4 class="footer-heading">
+          Services
+        </h4>
+
+        <div class="footer-links">
+
+          <a href="#">Virtual Tours</a>
+
+          <a href="#">Travel Guides</a>
+
+          <a href="#">Hotel Search</a>
+
+          <a href="#">AI Trip Planner</a>
+
+          <a href="#">Premium Destinations</a>
+
+        </div>
+
+      </div>
+
+      <!-- CONTACT -->
+
+      <div class="col-lg-3" id="contact">
+
+        <h4 class="footer-heading">
+          Contact Info
+        </h4>
+
+        <div class="contact-info">
+
+          <p>
+            <i class="fa-solid fa-location-dot"></i>
+            Ahmedabad, Gujarat, India
+          </p>
+
+          <p>
+            <i class="fa-solid fa-phone"></i>
+            +91 98765 43210
+          </p>
+
+          <p>
+            <i class="fa-solid fa-envelope"></i>
+            support@wanderverse.com
+          </p>
+
+          <p>
+            <i class="fa-solid fa-globe"></i>
+            www.wanderverse.com
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 WanderVerse Tourism. All Rights Reserved.
+      </p>
+
+      <p>
+        Designed with ❤️ for Travelers Around the World
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- SCRIPT -->
+
+<script>
+
+  // SEARCH FILTER
+
+  const searchInput =
+  document.getElementById("searchInput");
+
+  searchInput.addEventListener("keyup", function(){
+
+    const value =
+    searchInput.value.toLowerCase();
+
+    const cards =
+    document.querySelectorAll(".place-item");
+
+    cards.forEach(card=>{
+
+      const text =
+      card.textContent.toLowerCase();
+
+      if(text.includes(value)){
+        card.style.display="block";
+      }
+      else{
+        card.style.display="none";
+      }
+
+    });
+
+  });
+
+
+  // GALLERY IMAGES
+
+  const galleryImages = {
+
+    "North Goa":[
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKapTyonuI4lWiVoa7FD5w0O7maQ9kYsr5oQ&s",
+      "https://thumbs.dreamstime.com/b/goa-beach-indian-december-holidays-goa-beach-scene-december-holidays-features-sandy-shoreline-bonfire-404945330.jpg",
+      "https://deeptravels.co.in/uploads/2025/01/understanding-the-cost-of-traveling-in-goa.webp",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgDznTXDxqc8CWPZAI4fFjsbrkBAm7M8I4MA&s",
+      "https://t3.ftcdn.net/jpg/00/77/00/26/360_F_77002615_Gl1Hk6qZpi2xCAlX8EUTRLBqC4ei6QfC.jpg",
+      "https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2018/08/16/Pictures/_dbca9ffa-a138-11e8-9345-8d51f8ed9678.jpg",
+      "https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/bltea57b2eea49b1ca0/686f68cb1e063116c08e1053/alexey-turenkov-bWJiSZjIgTM-unsplash-HEADERMOBILE.jpg?fit=crop&disable=upscale&auto=webp&quality=60&crop=smart"
+    ],
+
+    "Taj Mahal":[
+      "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2070",
+      "https://upload.wikimedia.org/wikipedia/commons/d/da/Taj-Mahal.jpg",
+      "https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=2070",
+      "https://traveltradejournal.com/wp-content/uploads/2021/08/Taj-Mahal.jpg",
+      "https://www.holidify.com/images/cmsuploads/compressed/Taj_Mahal_20180814141729.png",
+      "https://images.unsplash.com/photo-1587135941948-670b381f08ce?q=80&w=2070"
+    ],
+
+    "Jaipur":[
+      "https://assets.vogue.in/photos/5ce41ea8b803113d138f5cd2/4:3/w_1440,h_1080,c_limit/Jaipur-Travel-Shopping-Restaurants.jpg",
+      "https://hblimg.mmtcdn.com/content/hubble/img/jaipur/mmt/activities/t_ufs/m_activities_amber_fort_2_l_436_573.jpg",
+      "https://www.tourmyindia.com/blog//wp-content/uploads/2020/11/Amer-fort-jaipur-feature.jpg",
+      "https://www.tourmyindia.com/blog//wp-content/uploads/2018/05/Jal-Mahal-Jaipur.jpg",
+      "https://www.swantour.com/blogs/wp-content/uploads/2018/09/Amer-Fort-Jaipur.jpg",
+      "https://miro.medium.com/1*fYA-b-KA9UUqPL2OsDYkQw.png"
+    ],
+
+    "South Maldives":[
+      "https://media.worldnomads.com/travel-safety/maldives/maldives-tropical-beach-gettyimages-159618430.jpg",
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/92/29/4d/caption.jpg?w=900&h=500&s=1",
+      "https://images.squarespace-cdn.com/content/v1/63a23d845d55cb35462bb987/415c017b-8ce0-480c-8605-43e4e2fb4820/Maldives+overwater+bungalow",
+      "https://media-cdn.tripadvisor.com/media/photo-s/1d/41/c6/63/maldives-sunset.jpg",
+      "https://maldives.baglionihotels.com/swimming_pool_sunset_beach_villa_baglioni_resort_maldives_4662fcb309.jpg",
+      "https://patinahotels.com/maldives/media_13fc6d0cda302da55c4cb718c79e5f03d1e2d799a.png?width=1000&format=png&optimize=medium"
+    ],
+
+    "Agra Fort":[
+      "https://www.airpano.ru/files/agra-fort-india/images/image3.jpg",
+      "https://kevinstandagephotography.wordpress.com/wp-content/uploads/2019/05/cover-3.jpg?w=1024",
+      "https://www.vacationindia.com/wp-content/uploads/2022/06/8-The-Khas-Mahal-in-agra-fort.jpg",
+      "https://whc.unesco.org/uploads/thumbs/site_0251_0010-400-400-20240807180746.webp",
+      "https://www.tripsavvy.com/thmb/ab3dUGqEp6DFlVTuNVg73hSPdvc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1045842092-b75188668568475882eae810ba0cbfb5.jpg",
+      "https://images.pexels.com/photos/29005685/pexels-photo-29005685.jpeg?cs=srgb&dl=pexels-himanshu-yadav-39040784-29005685.jpg&fm=jpg"
+    ],
+
+    "Fatehpur Sikri":[
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3h_QMFR7IaCG6HlE2ok3a6v5AHzjnMtPYtQ&s",
+      "https://www.rajasthandriver.com/img/attractions/667x445_fatehpur-sikri-2.jpg",
+      "https://www.airpano.com/files/fatehpur-sikri-india/images/image6.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/0/0a/Diwan-i-khas%2C_Fatehpur_Sikri%2C_India_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/99/25/22/photo0jpg.jpg?w=1200&h=1200&s=1",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdpjwSTwgEHAApOq3YJ9KcWMWAJ15R46n61g&s"
+    ],
+
+    "Delhi Akshardham":[
+      "https://sanatanajourney.com/wp-content/uploads/2025/03/Akshardham-Temple-Delhi-Features.jpg",
+      "https://media.easemytrip.com/media/Blog/India/637116640324801740/637116640324801740ptZ4Mc.jpg",
+      "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/06/71/0f/3e.jpg",
+      "https://images.squarespace-cdn.com/content/v1/6364bb76e5662e1fb6b69519/4b42269c-24f2-4dc6-8f21-ce780908fa94/S155_6.jpeg",
+      "https://hindupad.com/wp-content/uploads/akshardham-swami-narayan-mandir-delhi.jpg",
+      "https://hblimg.mmtcdn.com/content/hubble/img/delhi/mmt/activities/m_activities_delhi_akshardham_temple_l_418_627.jpg"
+    ],
+
+    "Varanasi":[
+      "https://t4.ftcdn.net/jpg/04/08/25/05/360_F_408250543_MVaEVGeWxb4FiFy7mEGKj8nfYkwoAZON.jpg",
+      "https://wallpapercave.com/wp/wp6612913.jpg",
+      "https://img.staticmb.com/mbcontent/images/crop/uploads/2024/4/places-to-visit-in-varanasi_0_1200.jpg.webp",
+      "https://images.pexels.com/photos/8112549/pexels-photo-8112549.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "https://i.pinimg.com/736x/21/d2/da/21d2daddaa273f7a9477f154f377bfe7.jpg",
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/4a/3d/a3/img-20180308-055907-hht.jpg?w=1200&h=-1&s=1"
+    ],
+
+    "Andaman Island":[
+      "https://travelogyindia.b-cdn.net/storage/app/upload/havelock-island-in-andaman-banner.jpg",
+      "https://felixferiatravel.com/images/1728156902Andaman1.jfif",
+      "https://www.holidaymonk.com/wp-content/uploads/2025/11/Travel-Guide-to-the-Andaman-and-Nicobar-Islands.webp",
+      "https://andamantourism.org.in/images/v2/packages/andaman-travel-tips-safety-measures-header.jpg",
+      "https://www.maldivesislandsresorts.com/uploads/andamanislands/attachchments/main/605da47c519ea179_0_kvjjzpjxjd2pn-t9.jpg",
+      "https://media.istockphoto.com/id/2155317918/photo/idyllic-beach-resort-on-krabi-thailand-at-night.jpg?s=612x612&w=0&k=20&c=BRhL-ZCDrlPfK9wutDyPKX-NdpSvlzmleBhu7WHgQkw="
+    ],
+
+    "Kathmandu":[
+      "https://shambalahotel.com/wp-content/uploads/2023/09/intro-places.jpg",
+      "https://images.unsplash.com/photo-1731051914382-c628c4ea9aea?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://assets.vogue.in/photos/5ce431b346cf5953f8b18c74/1:1/w_1080,h_1080,c_limit/featured.2.jpg",
+      "https://www.kiomoi.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fkmadmin%2Fimage%2Fupload%2Fc_scale%2Cw_1248%2Ff_auto%2Fv1734422465%2Fkiomoi%2Fkathmandu_travel1_2972.webp&w=3840&q=75",
+      "https://travelogyindia.b-cdn.net/blog/wp-content/uploads/2018/09/Mustang.jpg",
+      "https://www.holidify.com/images/cmsuploads/compressed/3317990489_2420ac833d_b_20190128110205.jpg"
+    ],
+
+    "Tibet":[
+      "https://media.istockphoto.com/id/620008000/photo/top-view-sunset-time-at-larung-gar.jpg?s=612x612&w=0&k=20&c=5CpQ1QBbrU-tyEBgJ4G0K2SHubg5Q5_Rpuga1qM2-tY=",
+      "https://www.navo-tour.com/en/wp-content/uploads/2025/01/tibet-winter-road-trip-08-1024x650.jpeg",
+      "https://i0.wp.com/www.yowangdu.com/wp-content/uploads/2020/09/Mount-Everest-800x450.jpg?resize=800%2C450&ssl=1",
+      "https://media.istockphoto.com/id/2185846587/photo/potala-palace-tibet-china.jpg?s=612x612&w=0&k=20&c=cNCDrUn0iHSBXZ1JgnwVB7q8xmQgoOOVdrMRkAWiR2o=",
+      "https://peakvisor.com/photo/Tibet-Mount-China-Everest.jpg",
+      "https://www.chinadaily.com.cn/travel/img/attachement/jpg/site1/20150826/b083fe96fb621747c4403c.jpg"
+    ],
+
+
+  };
+
+
+  // OPEN GALLERY
+
+  const galleryButtons =
+  document.querySelectorAll(".gallery-btn");
+
+  const galleryModal =
+  document.getElementById("galleryModal");
+
+  const galleryGrid =
+  document.getElementById("galleryGrid");
+
+  const galleryTitle =
+  document.getElementById("galleryTitle");
+
+  galleryButtons.forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+      const card =
+      btn.closest(".place-card");
+
+      const placeName =
+      card.querySelector(".place-title").innerText;
+
+      galleryTitle.innerText =
+      placeName + " Gallery";
+
+      galleryGrid.innerHTML="";
+
+      const images =
+      galleryImages[placeName];
+
+      images.forEach(img=>{
+
+        galleryGrid.innerHTML +=
+        `<img src="${img}">`;
+
+      });
+
+      galleryModal.style.display="flex";
+
+    });
+
+  });
+
+
+  // CLOSE GALLERY
+
+  const closeGallery =
+  document.getElementById("closeGallery");
+
+  closeGallery.addEventListener("click",()=>{
+
+    galleryModal.style.display="none";
+
+  });
+
+  galleryModal.addEventListener("click",(e)=>{
+
+    if(e.target===galleryModal){
+
+      galleryModal.style.display="none";
+
+    }
+
+  });
+
+
+  // OPEN EXACT AIRPANO PAGE
+
+  const viewsButtons = document.querySelectorAll(".view-btn");
+
+  viewsButtons.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+      const card = btn.closest(".place-card");
+
+      const placeName =
+      card.querySelector(".place-title").innerText;
+
+      const airpanoLink = panoramaImages[placeName];
+
+      if(airpanoLink){
+        window.open(airpanoLink, "_blank");
+      }
+      else{
+        alert("360° View Not Available");
+      }
+
+    });
+
+  });
+
+
+  // CLOSE MODAL
+
+  const closeTour = document.getElementById("closeTour");
+
+  closeTour.addEventListener("click", () => {
+
+    const tourModal = document.getElementById("tourModal");
+
+    tourModal.style.display = "none";
+
+    document.getElementById("panoramaViewer").innerHTML = "";
+
+  });
+
+
+
+  // HOTEL BUTTON
+
+  const hotelButtons =
+  document.querySelectorAll(".hotel-btn");
+
+  hotelButtons.forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+      const card =
+      btn.closest(".place-card");
+
+      const placeName =
+      card.querySelector(".place-title").innerText;
+
+      window.open(
+      `https://www.google.com/search?q=Hotels+in+${placeName}`,
+      "_blank");
+
+    });
+
+  });
+
+
+  // 360 VIEW BUTTON
+
+  const viewButtons =
+  document.querySelectorAll(".view-btn");
+
+  viewButtons.forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+      const card =
+      btn.closest(".place-card");
+
+      const placeName =
+      card.querySelector(".place-title").innerText;
+
+      window.open(
+      `https://www.google.com/search?q=${placeName}+360+view`,
+      "_blank");
+
+    });
+
+  });
+
+
+  // EXACT AIRPANO 360 LINKS
+
+  const panoramaImages = {
+
+    "North Goa":
+    "https://www.airpano.com/360photo/goa-north-2/?startscene=0&ath=-1592.411&atv=13.537&fov=86.96",
+
+    "Taj Mahal":
+    "https://www.airpano.com/360photo/taj-mahal-india/?startscene=0&ath=-58.440&atv=0.000&fov=81.00",
+
+    "Jaipur":
+    "https://www.airpano.com/360photo/jaipur-india/?startscene=0&ath=-116.770&atv=9.630&fov=64.22",
+
+    "South Maldives":
+    "https://www.airpano.com/360photo/maldives-south-1/?startscene=1&ath=-1421.027&atv=-4.270&fov=41.14",
+
+    "Agra Fort":
+    "https://www.airpano.com/360photo/agra-fort-india/?startscene=0&ath=-734.170&atv=27.020&fov=84.37",
+
+    "Fatehpur Sikri":
+    "https://www.airpano.com/360photo/fatehpur-sikri-india/?startscene=0&ath=33.860&atv=19.830&fov=52.31",
+
+    "Delhi Akshardham":
+    "https://www.airpano.com/360photo/akshardham-india/?startscene=0&ath=137.870&atv=15.000&fov=86.50",
+
+    "Varanasi":
+    "https://www.airpano.com/360photo/india_varanasi/?startscene=0&ath=231.653&atv=13.240&fov=67.04",
+
+    "Andaman Island":
+    "https://www.airpano.com/360photo/andaman_islands/?startscene=0&ath=-25.590&atv=3.730&fov=60.67",
+
+    "Kathmandu":
+    "https://www.airpano.com/360photo/nepal_kathmandu/?startscene=0&ath=109.920&atv=19.170&fov=77.01",
+
+    "Tibet":
+    "https://www.airpano.com/360photo/tibet-lulang/?startscene=0&ath=237.509&atv=-3.796&fov=76.58",
+
+  };
+
+  // SCROLL TO PLACES(Explore Destinations) SECTION
+function goToPlaces(){
+  document.getElementById("places").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+
+// AI BUDGET PLANNER
+
+function suggestPlaces(){
+
+  const budget =
+  parseInt(document.getElementById("budgetInput").value);
+
+  const days =
+  document.getElementById("daysInput").value;
+
+  const tripType =
+  document.getElementById("tripType").value;
+
+  const result =
+  document.getElementById("budgetResult");
+
+  if(!budget || !days || !tripType){
+
+    result.style.display = "block";
+
+    result.innerHTML =
+    `<h4>Please fill all details</h4>`;
+
+    return;
+  }
+
+  let places = "";
+  let travelStyle = "";
+
+  // LOW BUDGET
+
+  if(budget <= 10000){
+
+    travelStyle = "Budget Friendly Trip";
+
+    places = `
+      ✅ Jaipur <br>
+      ✅ Varanasi <br>
+      ✅ North Goa <br>
+      ✅ Delhi Akshardham
+    `;
+  }
+
+  // MEDIUM BUDGET
+
+  else if(budget <= 50000){
+
+    travelStyle = "Comfort Vacation";
+
+    places = `
+      ✅ Taj Mahal <br>
+      ✅ Fatehpur Sikri <br>
+      ✅ Andaman Island <br>
+      ✅ Kathmandu
+    `;
+  }
+
+  // HIGH BUDGET
+
+  else{
+
+    travelStyle = "Luxury Vacation";
+
+    places = `
+      ✅ South Maldives <br>
+      ✅ Tibet <br>
+      ✅ Andaman Premium Resorts <br>
+      ✅ Luxury Goa Tour
+    `;
+  }
+
+  result.style.display = "block";
+
+  result.innerHTML = `
+
+    <h4>AI Recommended Places</h4>
+
+    <p>
+      <strong>Budget:</strong> ₹${budget}
+    </p>
+
+    <p>
+      <strong>Trip Type:</strong> ${tripType}
+    </p>
+
+    <p>
+      <strong>Vacation Days:</strong> ${days} Days
+    </p>
+
+    <p>
+      <strong>Travel Style:</strong> ${travelStyle}
+    </p>
+
+    <hr>
+
+    <h5 style="color:#00d4ff;">
+      Suggested Destinations
+    </h5>
+
+    <p>${places}</p>
+
+  `;
+}
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
