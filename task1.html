@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <script>
+        const students = [
+  { name: 'Aarav', marks: 78, passed: true, subject: 'Math' },
+  { name: 'Diya', marks: 42, passed: false, subject: 'Science' },
+  { name: 'Kabir', marks: 88, passed: true, subject: 'Math' },
+  { name: 'Meera', marks: 65, passed: true, subject: 'English' },
+  { name: 'Rohan', marks: 38, passed: false, subject: 'Science' },
+  { name: 'Isha', marks: 92, passed: true, subject: 'Math' },
+  { name: 'Vivaan', marks: 75, passed: true, subject: 'English' },
+  { name: 'Anaya', marks: 70, passed: true, subject: 'Science' }
+]
+
+students.forEach((student) => {
+    if ( student.marks >= 70 && student.subject === 'Math' ) {
+        console.log(student.name);
+    }
+});
+
+students.forEach((student) => {
+    if (student.marks >= 70 && student.subject === 'English') {
+        console.log(student.name);
+    }
+});
+
+students.forEach((student) => {
+    if (student.marks >= 70 && student.subject === 'Science') {
+        console.log(student.name);
+    }
+});
+    </script>
+</body>
+</html>
